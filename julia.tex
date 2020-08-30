@@ -1,0 +1,65 @@
+\documentclass[10pt,a4paper]{article}
+
+% Code blocks definitions: Julia style
+% Using https://github.com/wg030/jlcode
+% Download the jlcode.sty from that repository 
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+
+\usepackage{jlcode}
+%\usepackage[nocolors]{jlcode} 
+
+\lstdefinestyle{code}{
+  language=Julia, 
+  xleftmargin=1.5cm,
+  showstringspaces=false,
+  % Comment the following three lines to remove colors
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  identifierstyle=\color[RGB]{0,102,0}
+}
+\lstnewenvironment{code}{
+\lstset{
+  language=Julia,
+  xleftmargin=1.5cm,
+  showstringspaces=false,
+  % Comment the following three lines to remove colors
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  identifierstyle=\color[RGB]{0,102,0}
+}}{}
+
+\newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
+
+\newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
+            \begin{center}
+            \href{http://www.mycodes.com/#1}
+                 {\textcolor{blue}{[Click here to download the code]}}
+            \end{center}}
+
+% Begin document
+
+\begin{document}
+
+\subsection*{Code typed:}
+
+\begin{code}
+struct MyType
+  a :: Int64
+end
+function f(x :: MyType)
+  x.a + 1
+end
+\end{code}
+
+\subsection*{Including code with {\tt codefile}:}
+
+\codefile{./example.jl}
+
+\subsection*{Including code with {\tt codelink}:}
+
+\codelink{./example.jl}
+
+\end{document}
+
