@@ -10,6 +10,8 @@
 \usepackage{jlcode}
 %\usepackage[nocolors]{jlcode} 
 
+% Change the following line to change the code size inside code boxes
+\def\jlbasicfont{\ttfamily\small\selectfont}
 \lstdefinestyle{code}{
   language=Julia, 
   xleftmargin=1.5cm,
@@ -17,27 +19,18 @@
   % Comment the following three lines to remove colors
   keywordstyle=\color{blue},
   commentstyle=\color{gray},
-  identifierstyle=\color[RGB]{0,102,0}
+  identifierstyle=\color[RGB]{0,102,0},
+  columns=fullflexible,
+  keepspaces=true
 }
 \lstnewenvironment{code}{
-\lstset{
-  language=Julia,
-  xleftmargin=1.5cm,
-  showstringspaces=false,
-  % Comment the following three lines to remove colors
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  identifierstyle=\color[RGB]{0,102,0}
-}}{}
-
+\lstset{style=code}}{}
 \newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
-
 \newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
             \begin{center}
             \href{http://www.mycodes.com/#1}
                  {\textcolor{blue}{[Click here to download the code]}}
             \end{center}}
-
 \newcommand{\inline}{\jlinl}
 
 % Begin document
