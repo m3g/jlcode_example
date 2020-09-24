@@ -6,9 +6,14 @@
 
 \usepackage[hidelinks]{hyperref}
 \usepackage{listings}
+\makeatletter
 
 \usepackage{jlcode}
 %\usepackage[nocolors]{jlcode} 
+
+% Define the URL and text to display on code links: 
+\newcommand{\codeurl}{https://raw.githubusercontent.com/m3g/jlcode_example/master}
+\newcommand{\codelinktext}{[Click here to download the code]}
 
 % Change the following line to change the code size inside code boxes
 \def\jlbasicfont{\ttfamily\footnotesize\selectfont}
@@ -27,9 +32,12 @@
 \lstset{style=code}}{}
 \newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
 \newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
-        \href{https://raw.githubusercontent.com/m3g/jlcode_example/master/#1}
-       {\textcolor{blue}{~\hspace{6.5cm}[Click here to download the code]}}}
+       \href{\codeurl/#1}{\textcolor{blue}{~\hspace{6.5cm}\codelinktext}}}
+\newcommand{\linkonly}[1]{
+  \filename@parse{#1}%
+  \href{\codeurl/#1}{\textcolor{blue}{\tt{[\filename@base.\filename@ext]}}}}
 \newcommand{\inline}{\jlinl}
+
 
 % Begin document
 
@@ -55,5 +63,8 @@ And \inline{@time f(x) = x + 1} is an example of inline code.
 \subsection*{Including code with {\tt codelink}:}
 
 \codelink{./code.jl}
+
+\noindent\\
+If {\tt linkonly} is used, only the link is shown: \linkonly{./code.jl}
 
 \end{document}
