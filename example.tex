@@ -22,7 +22,6 @@
 
 \lstdefinestyle{code}{
   language=Julia, 
-  xleftmargin=1.5cm,
   showstringspaces=false,
   % Comment the following three lines to remove colors
   keywordstyle=\color{blue},
@@ -31,13 +30,14 @@
   columns=fullflexible,
   keepspaces=true
 }
-\lstnewenvironment{code}{
-\lstset{style=code}}{}
+\lstnewenvironment{code}{\lstset{style=code}}{}
 \newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
 \newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
+  \noindent\begin{center}
   \filename@parse{#1}
   \href{\codeurl/\filename@base.\filename@ext}
-  {\textcolor{blue}{~\hspace{6.5cm}\codelinktext}}
+  {\textcolor{blue}{\codelinktext}}
+  \end{center}
 }
 \newcommand{\linkonly}[1]{
   \protect\filename@parse{#1}
@@ -77,7 +77,7 @@ And \inline{@time f(x) = x + 1} is an example of inline code.
 If {\tt linkonly} is used, only the link is shown: \linkonly{./code.jl}
 
 \begin{figure}[htbp]
-\caption{And the link \linkonly{./code.jl} works inside captions}
+\caption{And the link \linkonly{./code.jl} works inside captions.}
 \end{figure}
 
 \end{document}
