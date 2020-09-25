@@ -34,12 +34,16 @@
 \lstnewenvironment{code}{
 \lstset{style=code}}{}
 \newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
-\newcommand{\setcodelink}[1]{\filename@parse{#1}\href{\codeurl/\filename@base.\filename@ext}}
 \newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
-       \setcodelink{#1}{\textcolor{blue}{~\hspace{6.5cm}\codelinktext}}}
+  \filename@parse{#1}
+  \href{\codeurl/\filename@base.\filename@ext}
+  {\textcolor{blue}{~\hspace{6.5cm}\codelinktext}}
+}
 \newcommand{\linkonly}[1]{
-  \filename@parse{#1}%
-  \setcodelink{#1}{\textcolor{blue}{\tt[\filename@base.\filename@ext]}}}
+  \protect\filename@parse{#1}
+  \href{\codeurl/\filename@base.\filename@ext}
+  {\textcolor{blue}{\tt[\protect\filename@base.\protect\filename@ext]}}
+}
 \newcommand{\inline}{\jlinl}
 
 %
@@ -71,5 +75,9 @@ And \inline{@time f(x) = x + 1} is an example of inline code.
 
 \noindent\\
 If {\tt linkonly} is used, only the link is shown: \linkonly{./code.jl}
+
+\begin{figure}[htbp]
+\caption{And the link \linkonly{./code.jl} works inside captions}
+\end{figure}
 
 \end{document}
