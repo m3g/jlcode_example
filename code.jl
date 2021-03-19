@@ -5,7 +5,7 @@ function f(x :: MyType)
   x.a + 1
 end
 
-struct UnicodeChars
+Base.@kwdef struct UnicodeChars
   π = 3.1415
   ε = 1.0
   Φ = √2
