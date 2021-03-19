@@ -47,6 +47,20 @@
 \newcommand{\inline}{\jlinl}
 
 %
+% Changing font to JuliaMono and using LuaLatex for better Unicode support
+%
+\usepackage{fontspec}
+\newfontfamily \JuliaMono {JuliaMono-Light.ttf}[
+    Path      = ./,
+    Extension = .ttf
+    ]
+\newfontface \JuliaMonoLight{JuliaMono-Light}
+\setmonofont{JuliaMonoLight}[
+    Contextuals=Alternate
+]
+
+
+%
 % Begin document
 %
 
