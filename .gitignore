@@ -30,3 +30,5 @@ Manifest.toml
 *.fls
 *.out
 *.swp
+*.pyg
+_minted*

@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{struct} \PYG{n}{MyType}
-  \PYG{n}{a} \PYG{o}{::} \PYG{k+kt}{Int64}
-\PYG{k}{end}
-\PYG{k}{function} \PYG{n}{f}\PYG{p}{(}\PYG{n}{x} \PYG{o}{::} \PYG{n}{MyType}\PYG{p}{)}
-  \PYG{n}{x}\PYG{o}{.}\PYG{n}{a} \PYG{o}{+} \PYG{l+m+mi}{1}
-\PYG{k}{end}
-\end{Verbatim}
