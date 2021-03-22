@@ -1,0 +1,82 @@
+\documentclass[onecolumn]{article}
+\usepackage{fontspec}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+%
+% Define the URL and text to display on code links: 
+%
+\newcommand{\codeurl}{https://raw.githubusercontent.com/m3g/jlcode_example/master}
+\newcommand{\codelinktext}{[Click here to download the code]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% For JuliaMono and Unicode support
+\newfontfamily \JuliaMono {JuliaMono-Light.ttf}[ Path = ./, Extension = .ttf ]
+\newfontface \JuliaMonoLight{JuliaMono-Light}
+\setmonofont{JuliaMonoLight}[ Contextuals=Alternate ]
+
+% Simplify minted usage
+\newenvironment{code}
+{%
+  \VerbatimEnvironment
+  \begin{listing}[H]
+  \begin{minted}[%
+      label = code example,%  Might want to change or remove this label
+      linenos,%
+      breaklines,%
+      style = paraiso,%
+      fontsize=\small,%
+      frame = single%
+      ]{julia}%
+}
+{%
+  \end{minted}%
+  \end{listing}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\subsection*{Code typed inside {\tt code} environment:}
+
+\begin{code}
+struct MyType
+  a :: Int64
+end
+function f(x :: MyType)
+  x.a + 1
+end
+\end{code}
+
+\end{document}
+
+
+
+\documentclass[10pt,a4paper]{article}
+
+
+
+And \inline{@time f(x) = x + 1} is an example of inline code.
+
+\subsection*{Including code with {\tt codefile}:}
+
+\codefile{./code.jl}
+
+\subsection*{Including code with {\tt codelink}:}
+
+\codelink{./code.jl}
+
+\noindent\\
+If {\tt linkonly} is used, only the link is shown: \linkonly{./code.jl}
+
+\begin{figure}[htbp]
+\caption{And the link \linkonly{./code.jl} works inside captions.}
+\end{figure}
+
+\end{document}
